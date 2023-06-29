@@ -1,0 +1,1 @@
+Time::DATE_FORMATS[:datetime_jp] = 'yyy/mm/dd'

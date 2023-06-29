@@ -1,0 +1,36 @@
+<h3>プロフィール</h3>
+
+ <table>
+  <tr>
+    <th>アイコン画像</th>
+     <td>
+        <% if @user.User_icon?%>
+          <p><%= image_tag @user.User_icon.url, class: "icon", style: "border-radius: 30%; width: 50px; height: 50px; object-fit:cover;" %></p>
+        <% else %>
+          <p><%= image_tag 'https://rails-02-sample.herokuapp.com/assets/common/default-avatar-7a6cbfd7993e89f24bfc888f4a035a83c6f1428b8bdc47eed9095f2799a40153.png',class: "icon", style: "border-radius: 30%; width: 50px; height: 50px; object-fit:cover;" %></p>
+        <% end %>
+     </td>
+  </tr>
+  <tr>   
+     <th>名前</th>
+     <td><%= @user.name %></td>
+  </tr>
+  <tr>
+     <th>メールアドレス</th>
+     <td><%= @user.email %></td>
+  </tr>
+  <tr>
+     <th>パスワード</th>
+     <td>********</td>
+  </tr>
+  <tr>
+     <th>自己紹介</th>
+     <td><%=  @user.profile %></td>
+  </tr>
+ </table>
+
+ <div>
+   <ul>
+     <li><%= link_to "編集", edit_user_path(current_user), class: "button is-primary" %></li>
+   </ul>
+ </div>

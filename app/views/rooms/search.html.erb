@@ -1,0 +1,42 @@
+<h2>検索結果：<%= @rooms.count %>件</h2>
+  <div class="box">
+    <%= form_with url: search_rooms_path, local: true, method: :get, class: "search-form" do |f| %>
+      <%= f.text_field :keyword, placeholder: "エリア名を入力", class: "search-input-i" %>
+      <%= f.text_field :keyword, placeholder: "キーワード名を入力", class: "search-input-b" %>
+      <%= f.submit "検索", class: "search-btn-i" %>
+    <% end %>
+  </div>
+<table>
+  <thead>
+    <tr>
+      <th>画像</th>
+      <th>施設名</th>
+      <th>詳細</th>
+      <th>料金</th>
+      <th>住所</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% if @rooms.count > 0 %>
+      <% @rooms.each do |room| %>
+        <tr>
+          <td>
+            <div class="room_image">
+              <% if room.room_image?%>
+                <p><%= image_tag room.room_image, class: "icon", style: "width: 100px; height: 100px; object-fit:cover;" %></p>
+              <% else %>
+                <p><%= image_tag 'https://rails-02-sample.herokuapp.com/assets/room/default-image-4e0ac6b8d01335b5b22fe6586af13644ae51dddb6aeabf35b9174e80f13cd09d.png',class: "icon", style: "width: 100px; height: 100px; object-fit:cover;" %></p>
+              <% end %>
+            </div>
+          </td>
+          <td><%= link_to room.name, room_path(room) %></td>
+          <td><%= room.introduction %></td>
+          <td><%= room.price %></td>
+          <td><%= room.address %></td>
+        </tr>
+      <% end %>
+    <% else %>
+      <td colspan="9">現在登録している施設はありません</td>
+    <% end %>  
+  </tbody>
