@@ -7,14 +7,12 @@
  <table>
    <thead>
      <tr>
-     <th>id</th>
       <th>施設画像</th>
       <th>施設名</th>
       <th>紹介文</th>
       <th>宿泊料金</th>
       <th>作成日</th>
       <th>施設詳細</th>
-      <th>編集</th>
       <th>削除</th>
      </tr>
    </thead>
@@ -22,10 +20,9 @@
    <tbody>
      <% @rooms.each do |room| %>
        <tr>
-       <td><%= room.id %></td>
         <td>
           <% if room.room_image?%>
-            <p><%= image_tag room.room_image, class: "icon", style: "width: 100px; height: 100px; object-fit:cover;" %></p>
+            <p><%= image_tag room.room_image.url, class: "icon", style: "width: 100px; height: 100px; object-fit:cover;" %></p>
           <% else %>
             <p><%= image_tag 'https://rails-02-sample.herokuapp.com/assets/room/default-image-4e0ac6b8d01335b5b22fe6586af13644ae51dddb6aeabf35b9174e80f13cd09d.png',class: "icon", style: "width: 100px; height: 100px; object-fit:cover;" %></p>
           <% end %>
@@ -35,7 +32,6 @@
         <td><%= room.price %></td>
         <td><%= room.created_at.to_s(:datetime_jp) %></td>
         <td><%= link_to "詳細" , room_path(room) %></td>
-        <td><%= link_to "編集" , edit_room_path(room) %></td>
         <td><%= button_to "削除" , room_path(room), method: :delete , data: { confirm: "本当に削除しますか？" }%></td>
        </tr>
      <% end %>

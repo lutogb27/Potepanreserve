@@ -7,6 +7,7 @@ class RoomsController < ApplicationController
   def search
     @user = current_user
     @rooms = Room.search(params[:keyword])
+    @keyword = params[:keyword]
   end
   
   def new
@@ -19,9 +20,8 @@ class RoomsController < ApplicationController
     @room = Room.new(room_params)
     @room.user_id = current_user.id
     if @room.save
-    binding.pry
       flash[:notice] = "施設を登録しました"
-      redirect_to rooms
+      redirect_to :rooms
     else
       flash[:notice] = "施設を登録できませんでした"
       render "new"
@@ -43,7 +43,7 @@ class RoomsController < ApplicationController
 
     if @room.update(room_params)
       flash[:notice] = "宿泊施設を更新しました"
-      redirect_to @room
+      redirect_to rooms_path
     else
       render :edit
     end
@@ -53,7 +53,7 @@ class RoomsController < ApplicationController
     @room = Room.find(params[:id])
     @room.destroy
     flash[:notice] = "ユーザーを削除しました"
-    redirect_to :rooms
+    redirect_to rooms_path
   end
 
   def room_params

@@ -38,9 +38,8 @@ class ReservationsController < ApplicationController
 
 
   def create
-    @room = Room.find(params[:reservation][:room_id])
-    @user = User.find_by(params[:reservation][:room_id])
-    @reservation = Reservation.new(params.require(:reservation).permit(:checkin_at, :checkout_at, :person_count, :user_id, :room_id ,:created_at , :updated_at))
+    @user = current_user
+    @reservation = Reservation.new(reservation_params)
 
     if @reservation.save
       flash[:notice] = "予約に成功しました"

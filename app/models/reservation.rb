@@ -25,6 +25,6 @@ class Reservation < ApplicationRecord
   end
 
   def total_price
-    total_price = (total_day * person_count * room.fee)
+    total_price = (total_day * person_count * room.price )
   end
 end

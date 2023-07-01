@@ -1,12 +1,15 @@
 class Room < ApplicationRecord
-  validates :image, presence: true
-  validates :name , presence: true
-  validates :address , presence: true
-  validates :price , presence: true , numericality: { greater_than_or_equal_to: 0 }
+  has_many :reserves
+  belongs_to :user
+  has_many :reserve_users, through: :reserves, source: :user
+
+  mount_uploader :room_image, RoomImageUploader 
+
+  validates :room_name, :introduction, :price, :address, :room_image, presence: true
 
   def self.search(keyword)
     if keyword != ""
-      Room.where('room_name LIKE ? OR introduction LIKE ? OR address LIKE ?', "%#{search}%", "%#{search}%", "%#{search}%")
+      Room.where('room_name LIKE ? OR introduction LIKE ? OR address LIKE ?', "%#{keyword}%", "%#{keyword}%", "%#{keyword}%")
     else
       Room.all
     end

@@ -8,7 +8,7 @@
     <div class="column">
       <div class="box">
         <%= form_with url: search_rooms_path, local: true, method: :get, class: "search-form" do |f| %>
-          <%= f.text_field :keyword, placeholder: "エリア名を入力", class: "search-input" %>
+          <%= f.search_field :keyword, placeholder: "エリア名を入力", class: "search-input" %>
           <%= f.submit "検索", class: "search-btn" %>
         <% end %>
       </div>
@@ -24,25 +24,25 @@
     <div class="media">  
       <div class="card">
         <div class="card-content">
-          <div class="title-tokyo"><%= link_to '東京都',{:controller=>"rooms",:action=>"search",:q=>{:address_cont=>('東京都')}} %></div>
+          <div class="title-tokyo"><%= link_to '東京都',search_rooms_path(:keyword => "東京") %></div>
         </div>
       </div>
 
       <div class="card">
         <div class="card-content">
-          <div class="title-osaka"><%= link_to '大阪府',{:controller=>"rooms",:action=>"search",:q=>{:address_cont=>('大阪府')}} %></div>
+          <div class="title-osaka"><%= link_to '大阪府',search_rooms_path(:keyword => "大阪") %></div>
         </div>
       </div>
 
       <div class="card">
         <div class="card-content">
-           <div class="title-kyoto"><%= link_to '京都府',{:controller=>"rooms",:action=>"search",:q=>{:address_cont=>('京都府')}} %></div>
+           <div class="title-kyoto"><%= link_to '京都府',search_rooms_path(:keyword => "京都") %></div>
         </div>
       </div>
 
       <div class="card">
         <div class="card-content">
-          <div class="title-sapporo"><%= link_to '札幌市',{:controller=>"rooms",:action=>"search",:q=>{:address_cont=>('札幌市')}} %></div>
+          <div class="title-sapporo"><%= link_to '札幌市',search_rooms_path(:keyword => "札幌") %></div>
         </div>
       </div>
     </div>  
