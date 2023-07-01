@@ -22,7 +22,7 @@
             <div class="roomlist-list">
               <p class><%= room.room_name %></p>
               <p class="roomlist-list-in"><%= room.introduction %></p>
-              <p class><%= room.price %></p>
+              <p class><%= room.price.to_s(:delimited) %></p>
               <p class><%= room.address %></p>
               <p><%= link_to "詳細はこちら", room_path(room), class: "roomlist-link" %></p>
             </div>

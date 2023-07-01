@@ -17,7 +17,7 @@
     <li class="roomlist-list">  
         <p class><%= @room.room_name %></p>
         <p class="roomlist-list-in"><%= @room.introduction %></p>
-        <p class><%= @room.price %></p>
+        <p class><%= @room.price.to_s(:delimited) %></p>
         <p class><%= @room.address %></p>
 
 <%= form_with model: @reservation do |f| %>

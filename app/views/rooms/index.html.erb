@@ -29,7 +29,7 @@
         </td>
         <td><%= room.room_name %></td>
         <td><%= room.introduction %></td>
-        <td><%= room.price %></td>
+        <td><%= room.price.to_s(:delimited) %></td>
         <td><%= room.created_at.to_s(:datetime_jp) %></td>
         <td><%= link_to "詳細" , room_path(room) %></td>
         <td><%= button_to "削除" , room_path(room), method: :delete , data: { confirm: "本当に削除しますか？" }%></td>

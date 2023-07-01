@@ -38,7 +38,7 @@
 
             <tr>
             <th>お支払い金額</th>
-            <td class="is-right"><strong>¥<%= @reservation.total_price %></strong></td>
+            <td class="is-right"><strong>¥<%= @reservation.total_price.to_s(:delimited) %></strong></td>
             </tr>
         </table>
 
