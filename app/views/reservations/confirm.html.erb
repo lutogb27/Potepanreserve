@@ -1,54 +1,39 @@
-<section class="hero is-success">
-  <div class="hero-body">
-    <div class="container">
-      <h1 class="title">
-        予約の確認
-      </h1>
-    </div>
-  </div>
-</section>
+<h1>予約の確認</h1>
 
 <%= flash[:notice] %>
 <%= flash[:alert] %>
 
-<section class="section">
-  <div class="container">
-    <div class="columns is-centered">
-      <div class="column is-8">
-        <table class="table is-fullwidth">
-            <tr>
-            <th>チェックイン</th>
-            <td class="is-right"><%= @reservation.checkin_at.strftime("%Y/%m/%d") %></td>
-            </tr>
 
-            <tr>
-            <th>チェックアウト</th>
-            <td class="is-right"><%= @reservation.checkout_at.strftime("%Y/%m/%d") %></td>
-            </tr>
+ <table class="table is-fullwidth">
+  <tr>
+    <th>チェックイン</th>
+      <td class="is-right"><%= @reservation.checkin_at.to_s(:datetime_jp) %></td>
+    </tr>
+    <tr>
+      <th>チェックアウト</th>
+      <td class="is-right"><%= @reservation.checkout_at.to_s(:datetime_jp) %></td>
+    </tr>
+    <tr>
+      <th>日数</th>
+      <td class="is-right"><%= @reservation.total_day %>日</td>
+    </tr>
+    <tr>
+      <th>人数</th>
+      <td class="is-right"><%= @reservation.person_count %>人</td>
+    </tr>
+    <tr>
+      <th>お支払い金額</th>
+      <td class="is-right"><strong>¥<%= @reservation.total_price.to_s(:delimited) %></strong></td>
+    </tr>
+  </table>
 
-            <tr>
-            <th>日数</th>
-            <td class="is-right"><%= @reservation.total_day %>日</td>
-            </tr>
-
-            <tr>
-            <th>人数</th>
-            <td class="is-right"><%= @reservation.person_count %>人</td>
-            </tr>
-
-            <tr>
-            <th>お支払い金額</th>
-            <td class="is-right"><strong>¥<%= @reservation.total_price.to_s(:delimited) %></strong></td>
-            </tr>
-        </table>
-
-
-  <%= form_with model: @reservation, url: reservations_path, local: true do |f| %>
+<%= form_with model: @reservation, url: reservations_path, local: true do |f| %>
   <%= f.hidden_field :user_id %>
   <%= f.hidden_field :room_id, value: @room.id %>
   <%= f.hidden_field :checkin_at , value: @reservation.checkin_at %>
   <%= f.hidden_field :checkout_at , value: @reservation.checkout_at %>
   <%= f.hidden_field :person_count , value: @reservation.person_count %>
+  <%= f.hidden_field :total_price , value: @reservation.total_price %>
 
   <p>上記内容でよろしければ「予約を確定」を押してください。</p>
     <div class= "submit is-fullwidth">

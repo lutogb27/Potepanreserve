@@ -5,7 +5,7 @@ class UsersController < ApplicationController
   end
  
   def create
-    @user = User.new(params.require(:user).permit(:name, :user_icon, :email, :password))
+    @user = User.new(params.require(:user).permit(:name, :email, :password))
     if @user.save
       redirect_to :users_show_path
     else
@@ -22,6 +22,7 @@ class UsersController < ApplicationController
   end
  
   def update
+    @user.image = "https://rails-02-sample.herokuapp.com/assets/common/default-avatar-7a6cbfd7993e89f24bfc888f4a035a83c6f1428b8bdc47eed9095f2799a40153.png"
     @user = User.find(current_user.id)
     if current_user.update(params.require(:user).permit(:User_icon, :name, :profile))
       flash[:notice] = "ユーザーIDが「#{@user.id}」の情報を更新しました"

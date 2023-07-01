@@ -14,8 +14,8 @@
   <% if @reservation == true %>
     <% @reservations.each do |reservation| %>
       <tr>
-        <td><%= link_to "#{@room.name}", room_path(@room.id) %></td>
-        <td><%= link_to "#{@room.introduction}", room_path(@room.id) %></td>
+        <td><%= reservation.room.room_name %></td>
+        <td><%= reservation.room.introduction %></td>
         <td>¥<%= reservation.total_price.to_s(:delimited) %></td>
         <td><%= reservation.checkin_at.created_at.to_s(:datetime_jp) %></td>
         <td><%= reservation.checkout_at.created_at.to_s(:datetime_jp) %></td>

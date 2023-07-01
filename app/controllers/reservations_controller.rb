@@ -4,10 +4,12 @@ class ReservationsController < ApplicationController
   def index
     @user = current_user
     @reservations = Reservation.all
+    @rooms = Room.all
   end
 
   def new
     @user = current_user
+    @room = Room.find(params[:reservation][:room_id])
     @reservation = Reservation.new
 
   end
@@ -33,14 +35,14 @@ class ReservationsController < ApplicationController
       redirect_to @room, alert:"正しい人数を入力してください" and return
     end
     @total_day = (@reservation.checkout_at - @reservation.checkin_at).to_i 
-    @total_price = (@total_day * @reservation.person_count * @room.fee)
+    @total_price = (@total_day * @reservation.person_count * @room.price)
   end
 
 
   def create
     @user = current_user
+    @room = Room.find(params[:reservation][:room_id])
     @reservation = Reservation.new(reservation_params)
-
     if @reservation.save
       flash[:notice] = "予約に成功しました"
       redirect_to reservations_path (@reservation)

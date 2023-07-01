@@ -6,9 +6,9 @@ class User < ApplicationRecord
   has_many :rooms
   has_many :reserves
   has_many :reserve_rooms, through: :reserves, source: :room
+  has_one_attached :User_icon
 
   mount_uploader :User_icon, UserIconUploader
-
-  validates :user_name, presence: true
+  
   validates :User_icon, :introduction, presence: true, on: :update
 end

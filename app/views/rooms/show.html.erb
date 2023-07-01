@@ -20,7 +20,7 @@
         <p class><%= @room.price.to_s(:delimited) %></p>
         <p class><%= @room.address %></p>
 
-<%= form_with model: @reservation do |f| %>
+<%= form_with model: @reservation, method: :post , url: confirm_reservations_path, local: true do |f| %>
   <table>
     <tr>
       <th><%= f.label :checkin ,"チェックイン日" %></th>
@@ -40,7 +40,7 @@
   <%= f.hidden_field :room_id, value: @room.id %>
 
 <div>
-  <%= f.submit "予約完了する"%>
+  <%= f.submit "予約確認画面へ" %>
 </div>
   </li>
 </ul>
