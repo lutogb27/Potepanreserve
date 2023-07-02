@@ -1,6 +1,6 @@
 class Reservation < ApplicationRecord
-  belongs_to :user 
-  belongs_to :room 
+  belongs_to :user,optional: true 
+  belongs_to :room,optional: true 
 
   validates :checkin_at, presence: { message: "項目を入力してください" }
   validates :checkout_at, presence: { message: "項目を入力してください" }

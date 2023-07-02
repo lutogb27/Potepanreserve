@@ -5,7 +5,8 @@
      <tr>
        <th><%= f.label :room_image ,"施設画像" %></th>
        <td>
-        <%= f.file_field :room_image %>
+        <%= f.file_field :room_image, accept: 'image/*', onchange: 'previewImage(preview)' %>
+        <%= f.hidden_field :room_image_cache %>
        </td>
      </tr>
 

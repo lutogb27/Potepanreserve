@@ -24,7 +24,7 @@ ActiveRecord::Schema.define(version: 2023_06_26_135835) do
 
   create_table "rooms", force: :cascade do |t|
     t.string "user_id"
-    t.binary "room_image"
+    t.string "room_image"
     t.string "room_name"
     t.string "introduction"
     t.integer "price"

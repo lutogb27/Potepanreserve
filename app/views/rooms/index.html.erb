@@ -1,9 +1,5 @@
 <h3>登録済み施設一覧</h3>
 
- <% if flash[:notice] %>
-   <p class="notice"><%= flash[:notice] %></p>
- <% end %>
-
  <table>
    <thead>
      <tr>
@@ -39,5 +35,5 @@
  </table>
 
 <div class= "newroom">
-  <%= f.submit "新規施設登録", :new_room %>
+  <%= link_to "新しい部屋の登録" , new_room_path %>
 </div>

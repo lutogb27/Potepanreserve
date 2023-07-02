@@ -4,7 +4,6 @@
   <table class="reservation_ichiran">
     <thead>
         <tr>
-        <th>施設画像</th>
         <th>施設名</th>
         <th>施設紹介</th>
         <th>合計金額</th>
@@ -16,18 +15,9 @@
     </thead>
     <tbody>
       <% @reservations.each do |reservation| %>
-        <tr>
-          <td>
-            <div>
-              <% if reservation.room.room_image?%>
-                <p><%= image_tag reservation.room.room_image.url, class: "icon", style: "width: 100px; height: 100px; object-fit:cover;" %></p>
-              <% else %>
-                <p><%= image_tag 'https://rails-02-sample.herokuapp.com/assets/room/default-image-4e0ac6b8d01335b5b22fe6586af13644ae51dddb6aeabf35b9174e80f13cd09d.png',class: "icon", style: "width: 100px; height: 100px; object-fit:cover;" %></p>
-              <% end %>
-            </div>
-          </td>       
-          <td><%= @rooms.room_name %></td>
-          <td><%= @rooms.introduction %></td>
+        <tr>      
+          <td><%= reservation.room.room_name %></td>
+          <td><%= reservation.room.introduction %></td>
           <td>¥<%= reservation.total_price.to_s(:delimited) %></td>
           <td><%= reservation.checkin_at.to_s(:datetime_jp) %></td>
           <td><%= reservation.checkout_at.to_s(:datetime_jp) %></td>

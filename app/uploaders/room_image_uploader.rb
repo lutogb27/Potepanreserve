@@ -17,11 +17,11 @@ class RoomImageUploader < CarrierWave::Uploader::Base
   def default_url(*args)
   #   # For Rails 3.1+ asset pipeline compatibility:
   #   # ActionController::Base.helpers.asset_path("fallback/" + [version_name, "default.png"].compact.join('_'))
-  "default.png"
+  "https://rails-02-sample.herokuapp.com/assets/room/default-image-4e0ac6b8d01335b5b22fe6586af13644ae51dddb6aeabf35b9174e80f13cd09d.png"
   #   "/images/fallback/" + [version_name, "default.png"].compact.join('_')
   end
   
-  def extension_allowlist
+  def extension_whitelist
     %w(jpg jpeg gif png)
   end
 

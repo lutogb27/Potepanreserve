@@ -4,12 +4,10 @@ class ReservationsController < ApplicationController
   def index
     @user = current_user
     @reservations = Reservation.all
-    @rooms = Room.all
   end
 
   def new
     @user = current_user
-    @room = Room.find(params[:reservation][:room_id])
     @reservation = Reservation.new
 
   end
@@ -55,7 +53,7 @@ class ReservationsController < ApplicationController
   def show
     @user = current_user
     @reservations = Reservation.all
-    @reservations = Reservation.where(room_id: @room.id)
+    @room = @reservation.room
   end
 
   def edit

@@ -1,7 +1,7 @@
 class RoomsController < ApplicationController
   def index
     @user = current_user
-    @rooms = Room.all
+     @rooms = current_user.rooms
   end
 
   def search
@@ -59,6 +59,7 @@ class RoomsController < ApplicationController
     params.require(:room).permit(
       :room_name,
       :room_image,
+      :room_image_cache,
       :introduction,
       :price,
       :address

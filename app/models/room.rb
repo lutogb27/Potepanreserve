@@ -1,10 +1,10 @@
 class Room < ApplicationRecord
   has_many :reservations
-  belongs_to :user
+  belongs_to :user,optional: true
 
   mount_uploader :room_image, RoomImageUploader 
 
-  validates :room_name, :introduction, :price, :address, :room_image, presence: true
+  validates :room_name, :introduction, :price, :address, presence: true
 
   def self.search(keyword)
     if keyword != ""

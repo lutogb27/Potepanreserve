@@ -28,12 +28,12 @@
   </table>
 
 <%= form_with model: @reservation, url: reservations_path, local: true do |f| %>
-  <%= f.hidden_field :user_id %>
+  <%= f.hidden_field :user_id, value: @user.id  %>
   <%= f.hidden_field :room_id, value: @room.id %>
-  <%= f.hidden_field :checkin_at , value: @reservation.checkin_at %>
-  <%= f.hidden_field :checkout_at , value: @reservation.checkout_at %>
-  <%= f.hidden_field :person_count , value: @reservation.person_count %>
-  <%= f.hidden_field :total_price , value: @reservation.total_price %>
+  <%= f.hidden_field :checkin_at, value: @reservation.checkin_at %>
+  <%= f.hidden_field :checkout_at, value: @reservation.checkout_at %>
+  <%= f.hidden_field :person_count, value: @reservation.person_count %>
+  <%= f.hidden_field :total_price, value: @reservation.total_price %>
 
   <p>上記内容でよろしければ「予約を確定」を押してください。</p>
     <div class= "submit is-fullwidth">
