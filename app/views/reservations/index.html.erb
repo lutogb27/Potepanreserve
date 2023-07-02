@@ -26,8 +26,8 @@
               <% end %>
             </div>
           </td>       
-          <td><%= reservation.room.room_name %></td>
-          <td><%= reservation.room.introduction %></td>
+          <td><%= @rooms.room_name %></td>
+          <td><%= @rooms.introduction %></td>
           <td>¥<%= reservation.total_price.to_s(:delimited) %></td>
           <td><%= reservation.checkin_at.to_s(:datetime_jp) %></td>
           <td><%= reservation.checkout_at.to_s(:datetime_jp) %></td>

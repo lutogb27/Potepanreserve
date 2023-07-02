@@ -55,6 +55,7 @@ class ReservationsController < ApplicationController
   def show
     @user = current_user
     @reservations = Reservation.all
+    @reservations = Reservation.where(room_id: @room.id)
   end
 
   def edit
