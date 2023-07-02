@@ -1,7 +1,6 @@
 class Room < ApplicationRecord
   has_many :reservations
   belongs_to :user
-  has_many :reserve_users, through: :reservations, source: :user
 
   mount_uploader :room_image, RoomImageUploader 
 
