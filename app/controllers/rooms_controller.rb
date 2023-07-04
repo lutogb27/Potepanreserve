@@ -8,6 +8,10 @@ class RoomsController < ApplicationController
     @user = current_user
     @rooms = Room.search(params[:keyword])
     @keyword = params[:keyword]
+    @rooms = Room.search(params[:key])
+    @keyword = params[:key]
+    @rooms = Room.search(params[:word])
+    @keyword = params[:word]
   end
   
   def new

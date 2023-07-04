@@ -32,7 +32,7 @@
     </tr>
     <tr>
       <th><%= f.label :number_of_people ,"人数" %></th>
-      <td><%= f.text_field :person_count, :placeholder => "0人" %></td>
+      <td><%= f.number_field :person_count, min:1, :placeholder => "0人" %></td>
     </tr>
   </table>
 
