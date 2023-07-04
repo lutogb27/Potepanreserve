@@ -5,7 +5,7 @@ class Room < ApplicationRecord
   mount_uploader :room_image, RoomImageUploader 
 
   validates :room_name, :introduction, :address, presence: true
-  validates :fee , presence: true , numericality: { greater_than_or_equal_to: 0 }
+  validates :price , presence: true , numericality: { greater_than_or_equal_to: 0 }
 
   def self.search(keyword)
     if keyword != ""
