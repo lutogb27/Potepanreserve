@@ -4,15 +4,18 @@
    <table>
      <tr>
         <th><%= f.label :user_icon,"アイコン画像" %></th>
-        <td><%= f.file_field :User_icon, id: :user_User_icon %></td>
+        <td>
+         <%= f.file_field :User_icon, accept: 'image/*', onchange: 'previewImage(preview)' %>
+        <%= f.hidden_field :User_icon_cache %>
+        </td>
      </tr>
      <tr>
        <th><%= f.label :name ,"名前" %></th>
        <td><%= f.text_field :name %></td>
      </tr>
      <tr>
-       <th><%= f.label :introduction ,"自己紹介" %></th>
-       <td><%= f.text_area :introduction %></td>
+       <th><%= f.label :profile ,"自己紹介" %></th>
+       <td><%= f.text_area :profile %></td>
      </tr>
    </table>
 

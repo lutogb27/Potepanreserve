@@ -9,5 +9,5 @@ class User < ApplicationRecord
 
   mount_uploader :User_icon, UserIconUploader
   
-  validates :User_icon, :introduction, presence: true, on: :update
+  validates :User_icon, presence: true, on: :update
 end
