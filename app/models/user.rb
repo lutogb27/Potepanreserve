@@ -6,5 +6,11 @@ class User < ApplicationRecord
   has_many :rooms
   has_many :reservations
 
+  validates :name, presence: true, length: { maximum: 20 }
+  validates :profile, length: { maximum: 200 }
+  validates :email, presence: true
+  validates :password, presence: true
+  validates :password_confirmation, presence: true
+
   mount_uploader :User_icon, UserIconUploader
 end

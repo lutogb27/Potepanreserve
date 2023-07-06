@@ -4,10 +4,10 @@ Rails.application.routes.draw do
   get 'reservation/index'
   get 'rooms/index'
   devise_for :users
+  root to:'home#index'
+  get 'users/show'
   resources :users do
   end
-  root 'home#index'
-  get 'users/show'
   resources :rooms do
     collection do
       get "search"
