@@ -1,0 +1,47 @@
+<h3>新規予約</h3>
+
+<div class="back-button">
+  <%= link_to "← 戻る",:back %>
+</div>
+
+<ul class="roomlist">
+    <li class="roomlist-list">
+      <div class="room_image">
+        <% if @room.room_image?%>
+          <p><%= image_tag @room.room_image.url, class: "icon", style: "width: 300px; height: 200px; object-fit:cover;" %></p>
+        <% else %>
+          <p><%= image_tag 'https://rails-02-sample.herokuapp.com/assets/room/default-image-4e0ac6b8d01335b5b22fe6586af13644ae51dddb6aeabf35b9174e80f13cd09d.png',class: "icon", style: "width: 300px; height: 200px; object-fit:cover;" %></p>
+        <% end %>
+      </div>
+    </li>
+    <li class="roomlist-list">  
+        <p class><%= @room.room_name %></p>
+        <p class="roomlist-list-in"><%= @room.introduction %></p>
+        <p class><%= @room.price.to_s(:delimited) %></p>
+        <p class><%= @room.address %></p>
+
+<%= form_with model: @reservation, method: :post , url: confirm_reservations_path, local: true do |f| %>
+  <table>
+    <tr>
+      <th><%= f.label :checkin ,"チェックイン日" %></th>
+      <td><%= f.date_field :checkin_at%></td>
+    </tr>
+    <tr>
+      <th><%= f.label :checkout ,"チェックアウト日" %></th>
+      <td><%= f.date_field :checkout_at %></td>
+    </tr>
+    <tr>
+      <th><%= f.label :number_of_people ,"人数" %></th>
+      <td><%= f.number_field :person_count, min:1, :placeholder => "0人" %></td>
+    </tr>
+  </table>
+
+  <%= f.hidden_field :user_id, value: @user.id %>
+  <%= f.hidden_field :room_id, value: @room.id %>
+
+<div>
+  <%= f.submit "予約確認画面へ" %>
+</div>
+  </li>
+</ul>
+ <% end %>

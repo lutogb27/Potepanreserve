@@ -1,0 +1,52 @@
+<nav class="navbar is-light" role="navigation" aria-label="main navigation">
+    <div class="navbar-brand">
+        <a class="navbar-item" href="/">
+            <img class="Navbar__logo" alt="サイトロゴ" src="https://rails-02-sample.herokuapp.com/assets/common/logo.png">
+        </a>
+        <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+        </a>
+    </div>
+    <div id="navbarBasicExample" class="navbar-menu">
+        <div class="navbar-start">
+            <div class="navbar-item">
+            </div>
+        </div>
+        <div class="navbar-end">
+            <a class="navbar-item"></a>
+            <a class="navbar-item"></a>
+            <!-- もしログインしていなかったら-->
+            <% if (!user_signed_in?) %>
+                <div class="navbar-item">
+                    <div class="buttons">
+                        <%= link_to  "ログイン", new_user_session_path, class: "button is-white" %>
+                        <%= link_to  "新規登録", new_user_registration_path, class: "button is-white" %>
+                    </div>
+                </div>
+            <!-- ログインしていたら-->
+            <% else %>
+                <div class="navbar-item has-dropdown is-hoverable" style="margin-right: 100px;">
+                    <a class="navbar-item"><%= current_user.email %></a>
+                    <div class="navbar-dropdown">
+                        <a href="" class="navbar-item"></a>
+                        <a href="" class="navbar-item"></a>
+                        <hr class="navbar-divider">
+                        <%= link_to  "ログアウト", destroy_user_session_path, method: :delete, class: "navbar-item" %>
+                    </div>
+                </div>
+            <% end %>            
+        </div>
+    </div>
+</nav>
+<script>
+$(document).ready(function() {
+  // navbar burgerアイコンでクリックイベントを確認する
+  $(".navbar-burger").click(function() {
+      // 「navbar-burger」と「navbar-menu」の両方で「is-active」クラスを切り替える
+      $(".navbar-burger").toggleClass("is-active");
+      $(".navbar-menu").toggleClass("is-active");
+  });
+});
+</script>

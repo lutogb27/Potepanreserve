@@ -1,0 +1,42 @@
+.navbar {
+  background-color: #1A4472;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+.is-light {
+  display: flex;
+  justify-content: space-between;
+}
+
+.Navbar__logo {
+  width: 221px;
+  margin-left: 32px;
+}
+
+.navbar-menu {
+  display: flex;
+  align-items: center;
+}
+
+.navbar-end>h2 {
+  color: #FFFFFF;
+  font-size: 1em;
+}
+
+.post {
+  color: #FFFFFF;
+  text-decoration: none;
+  margin-right: 32px;
+}
+
+.navbar-end {
+  display: flex;
+  align-items: center;
+}
+
+.point {
+  color: #FFFFFF;
+  text-decoration: none;
+  margin-left: 15px;
+}

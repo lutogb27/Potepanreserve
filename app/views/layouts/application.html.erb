@@ -11,6 +11,67 @@
   </head>
 
   <body>
-    <%= yield %>
+  <nav class="navbar is-light" role="navigation" aria-label="main navigation">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="/">
+        <img class="Navbar__logo" alt="サイトロゴ" src="https://rails-02-sample.herokuapp.com/assets/common/logo.png">
+      </a>
+    </div>
+    <div id="navbarBasicExample" class="navbar-menu">
+      <div class="navbar-end">
+        <a class="navbar-item"></a>
+          <% if user_signed_in? %> <!-- ユーザーがログインしているか調べる -->
+            <% if @user.User_icon?%>
+              <p><%= image_tag @user.User_icon.url, class: "icon", style: "border-radius: 30%; width: 50px; height: 50px; object-fit:cover;" %></p>
+            <% else %>
+              <p><%= image_tag 'https://rails-02-sample.herokuapp.com/assets/common/default-avatar-7a6cbfd7993e89f24bfc888f4a035a83c6f1428b8bdc47eed9095f2799a40153.png',class: "icon", style: "border-radius: 30%; width: 50px; height: 50px; object-fit:cover;" %></p>
+            <% end %>
+              <strong><%= link_to current_user.name, users_show_path, class: 'point' %></strong>
+            <ul class="gnavi__lists">
+              <li class="gnavi__list">
+                <a href="#">レ</a>
+                <ul class="dropdown__lists">
+                  <li class="dropdown__list">
+                    <a href="#">
+                      <%= link_to "施設の新規登録", new_room_path %>
+                    </a>
+                  </li>
+                  <li class="dropdown__list">
+                    <a href="#">
+                      <%= link_to "予約済み一覧", reservations_path %>
+                    </a>
+                  </li>
+                  <li class="dropdown__list">
+                    <a href="#">
+                      <%= link_to "登録済み一覧", rooms_path %>
+                    </a>
+                  </li>
+                  <li class="dropdown__list">
+                    <a href="#">
+                      <%= link_to "アカウント設定", users_show_path %>
+                    </a>
+                  </li>
+                  <li class="dropdown__list">
+                    <a href="#">
+                      <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
+                    </a>
+                  </li>
+                </ul>
+              </li>
+            </ul>
+          <% else %>
+            <!-- ユーザーがログインしていなかった時の処理 -->
+            <h2> 現在ログインしていません </h2>
+            <%= link_to "ログイン", new_user_session_path, class: 'post' %> <!-- ログイン画面に移行する -->
+            <%= link_to "新規登録", new_user_registration_path, class: 'post' %> <!-- 新規登録画面に移行する -->
+          <% end %>           
+      </div>
+    </div>
+  </nav>
+  
+  <p class="notice"><%= notice %></p>
+  <p class="alert"><%= alert %></p>
+    <hr />
+  <%= yield %>
   </body>
 </html>
